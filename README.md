@@ -4,7 +4,7 @@
 
 ![](images/thumbnail.jpg)
 
-[Link to slides]()
+[Link to slides](ivelasq-automating-quarto.share.connect.posit.cloud)
 
 ## Abstract
 
