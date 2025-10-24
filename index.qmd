@@ -756,9 +756,13 @@ Option 1:
 4. Repeat 39 times
 :::
 
+. . .
+
+![](https://media.tenor.com/lJ8UqR3kA7oAAAAj/mushroom-scream.gif){fig-align="center"}
+
 ## Render all 39 reports    
 
-One HTML report for each state.
+Option 2:
 
 ::: incremental
 
