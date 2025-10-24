@@ -83,7 +83,6 @@ How to do this without...
 
 * Copy and pasting?
 * Manually editing changes?
-* Tweaking formatting?
 * Giving up?
 
 . . .
@@ -184,7 +183,7 @@ Artwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Ru
 :::
 
 ::: notes
-Shirley Han has a great YouTube video from the R NYC Conference on Quarto reports. She mentions that if you are writing a report repeatedly, so not just one time, where the structure stays the same but the data or numbers or figures change, then Quarto may be for you. Also, if you are already using a Quarto-supported language for data cleaning, creating graphs, etc., then it might be a good fit.
+We choose Quarto because it streamlines our entire workflow and ensures we're doing modern, reliable data science. The biggest advantages are Reproducibility and Automation: Quarto integrates your code and narrative, guaranteeing that anyone can reproduce your results by simply rerunning the document, and it automatically updates your reports when the underlying data changes, saving you huge amounts of time. Plus, it offers excellent Flexibility—you can combine code from multiple languages and add complex figures and tables easily. Finally, Quarto provides Single-Source Publishing, which means you write your report once and can instantly generate professional HTML webpages, PDFs, and Word documents from that one file, eliminating the need for constant re-formatting. Shirley Han has a great YouTube video from the R NYC Conference on Quarto reports. She mentions that if you are writing a report repeatedly, so not just one time, where the structure stays the same but the data or numbers or figures change, then Quarto may be for you. Also, if you are already using a Quarto-supported language for data cleaning, creating graphs, etc., then it might be a good fit. 
 :::
 
 # Getting started
