@@ -1,0 +1,987 @@
+---
+title: "Automating Repetitive<br>Reports with"
+subtitle: "2025 MAPOR Fall Webinar Series"
+pagetitle: "Automating Repetitive Reports with Quarto"
+format:
+  revealjs: 
+    include-after-body:
+      - "tabset.html"
+    theme: [default, styles.scss]
+    filters:
+      - reveal-auto-agenda
+      - fontawesome
+    auto-agenda:
+      bullets: numbered
+      heading: "Automating Repetitive Reports with Quarto"
+    transition: fade
+    background-transition: fade
+    highlight-style: pygments
+    title-slide-attributes: 
+      data-background-image: images/title.png
+      data-background-color: "white"
+      style: "text-align: left; right: 10%; font-size: 0.9em"
+---
+
+## Introduction
+
+<center>
+
+<img src="images/headshot.jpg" style="border-radius: 50%;" width="250px"/>
+
+[{{< fa brands github >}} \@ivelasq](https://github.com/ivelasq)
+
+[{{< fa brands twitter >}} \@ivelasq3](https://twitter.com/ivelasq3)
+
+[{{< fa brands mastodon >}} \@ivelasq3](https://fosstodon.org/@ivelasq3)
+
+[{{< fa link >}} ivelasq.rbind.io](https://ivelasq.rbind.io)
+
+</center>
+
+# Overview    
+
+## The challenge
+
+We will be using data from [TidyTuesday](https://github.com/rfordatascience/tidytuesday) on polling places in the United States.
+
+![](images/data.png){style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;" width=50% }
+
+::: footer
+Geocoded by [@thedivtagguy](https://github.com/thedivtagguy/tidytuesday/tree/master/2024/week-03-polling-places/analysis)
+:::
+
+::: notes
+The dataset contains information on the election day(s) in the state, polling locations and their addresses, and various other data points. We won't be covering data cleaning in this session. These data are cleaned into tidy format, with rows for each polling location. Today, we'll create reports for polling locations in different states in the U.S. We will touch briefly on PDF report generation, iteration, and styling, but will focus mostly on the set up and execution of HTML reports.
+:::
+
+## The challenge
+
+![](images/states.png)
+
+## The challenge
+
+![](images/counties.png)
+
+## The challenge
+
+![](images/polling-info.png)
+
+## The challenge
+
+![](images/geo-info.png)
+
+## The challenge
+
+![](images/labeled-report.png){fig-align="center"}
+
+## {background-image="images/example-report.png" background-size="100px" background-repeat="repeat"}
+
+## The challenge
+
+How to do this without...
+
+* Copy and pasting?
+* Manually editing changes?
+* Tweaking formatting?
+* Giving up?
+
+. . .
+
+![](https://media.tenor.com/lJ8UqR3kA7oAAAAj/mushroom-scream.gif){fig-align="center"}
+
+## The solution {background-image="images/quarto.png"}
+
+## Session materials
+
+-   Slides: <https://ivelasq.quarto.pub/getting-started-with-report-writing-using-quarto/>
+-   GitHub repo with templates: <https://github.com/ivelasq/reports-with-quarto-exercises>
+
+. . .
+
+::: {.callout-note}
+We will be using **R** code.
+:::
+
+# What is Quarto? {.r-stretch}
+
+## What is Quarto? {auto-animate="true"}
+
+Quarto is an open-source scientific and technical publishing system [that allows you to combine text, images, code, plots, and tables in a fully-reproducible document.]{.fragment style="color: #004aad;"} [Quarto has support for multiple languages including R, Python, Julia, and Observable.]{.fragment style="color: #c30a68;"} [It also works for a range of output formats such as PDFs, HTML documents, websites, presentations.]{.fragment style="color: #5e17eb;"}
+
+::: footer
+Definition by [Nicola Rennie](https://nrennie.rbind.io/) 
+:::
+
+::: notes
+Quarto is an open-source scientific and technical publishing system built on Pandoc. Let's break this down: Open-source: Posit believes that it's better for everyone if the tools used for research and science are free and open. Free software means more reproducibility, widespread sharing of knowledge and techniques, and elimination of cost barriers. You can also see the source code and contribute, too. Scientific and technical: Scientific and technical means that Quarto has specific things for journal articles or scientific papers, like support for code execution, citations, footnotes, scientific markdown, equations, citations, crossrefs, so many things. We'll be showing some of these later on. Publishing system: Quarto is a tool for writing dynamic documents that combine code, output, and text. It can embed output from Python, R, Julia, and Observable. Quarto can be rendered to create high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more formats. Pandoc is the tool working behind the scenes to change Quarto documents to their finalized format. Quarto documents are authored with markdown, which is a plain text format. But Pandoc markdown is very rich and lets you control your document in very specific ways.
+:::
+
+## How does Quarto work?
+
+![](images/horst-qmd-render-schema.png){fig-align="center"}
+
+::: footer
+Artwork from “Hello, Quarto” keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio::Conf(2022). Illustrated by Allison Horst.
+:::
+
+## What can you build with Quarto? {.smaller}
+
+::: panel-tabset
+### Websites
+
+[![Vote Idaho by Andrew Heiss (Department of Public Management and Policy, Georgia State University) and the Idaho Secretary of State](images/website.png){height="400" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://results.voteidaho.gov)
+
+### Books
+
+[![Visualization for Social Data Science by Roger Beecham](images/book.png){height="400" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://vis4sds.github.io/vis4sds/)
+
+### Blogs
+
+[![https://jollydata.blog/](images/blog.png){height="400" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://jollydata.blog/)
+
+### Presentations
+
+[![Duplicating Quarto elements with code templates to reduce copy and paste errors by USGS](images/presentation.png){height="400" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://waterdata.usgs.gov/blog/quarto-template-demo/)
+
+### Journals
+
+[![Navigating Hostility: The Effect of Nonprofit Transparency and Accountability on Donor Preferences in the Face of Shrinking Civic Space by Suparna Chaudhry (Lewis & Clark College, International Justice Lab at College of William & Mary) et al.](images/journal.png){height="400"style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://stats.andrewheiss.com/silent-skywalk/manuscript/output/manuscript.html)
+
+### Dashboards
+
+[![Dashboard by Mine Çentikaya-Rundel](images/dashboard.png){height="400" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}](https://quarto.org/docs/dashboards/)
+
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+:::: {.fragment .tabswitch}
+:::
+
+## Why Quarto?
+
+::: incremental
+
+- **Reproducibility**: Document your process and make it easy to reproduce and replicate your work
+- **Automation**: Update your report and/or code output
+- **Flexibility**: Add multiple data sources, create figures, tables, diagrams, etc.
+- **Single-source publishing**: Ability to create HTML, PDF, Word versions from a single source
+
+:::
+
+::: notes
+Shirley Han has a great YouTube video from the R NYC Conference on Quarto reports. She mentions that if you are writing a report repeatedly, so not just one time, where the structure stays the same but the data or numbers or figures change, then Quarto may be for you. Also, if you are already using a Quarto-supported language for data cleaning, creating graphs, etc., then it might be a good fit.
+:::
+
+# Getting started
+
+## Installation
+
+![](images/getting-started.png){width=80% fig-align="center"}
+
+::: aside
+[quarto.org/docs/get-started/](https://quarto.org/docs/get-started/)
+:::
+
+## Tools for authoring
+
+::: {layout-ncol="3" align="center"}
+
+![](images/positron-logo.png){width="160"}
+
+![](https://quarto.org/docs/get-started/images/rstudio-logo.png){width="160"}
+
+![](https://quarto.org/docs/get-started/images/vscode-logo.png){width="160"}
+
+![](https://quarto.org/docs/get-started/images/jupyter-logo.png){width="160"}
+
+![](https://quarto.org/docs/get-started/images/text-editor-logo.png){width="160"}
+
+:::
+
+```{.bash filename="Terminal"}
+quarto render
+```
+
+
+## Creating a new Quarto document {.smaller}
+
+- This file will have a `.qmd` extension
+
+![](images/open-doc.png){fig-align="center" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}
+
+
+## Previewing a Quarto document
+
+Use the **Render** button (in RStudio) or the **Preview** button (in Positron or VS Code) to preview documents as you edit them.
+
+- Check off **Render on Save**  to automatically render whenever you save
+
+![](images/render.png){.absolute left=100 height=20% style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}
+
+![](images/preview.png){.absolute left=600 height=20% style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}
+
+::: notes
+In RStudio, you can use the Render button to render the file, or take it through that process of converting to markdown, pandoc processing, etc. and preview the output with a single click. If you're familiar with R Markdown, it is where the knit button would show for those document. If you prefer to automatically render whenever you save, you can check the Render on Save option on the editor toolbar. The preview will update whenever you re-render the document. Side-by-side preview works for both HTML and PDF outputs.
+:::
+
+## {background-image="images/demo.png" background-color="aquamarine"}
+
+## We are here
+
+![](images/single-doc.png){fig-align="center"}
+
+## Anatomy of a Quarto document
+
+A `.qmd` file format with three components:
+
+1.  YAML: Metadata
+
+2.  Text: Markdown
+
+3.  Code: R, Python, Observable, and Julia
+
+. . .
+
+**Weave it all together**, and you have beautiful, powerful, and useful outputs!
+
+::: notes
+A Quarto document contains three types of content: a YAML header, code chunks, and markdown text.
+:::
+
+## Anatomy of a Quarto document
+
+**Metadata: YAML**
+
+````{.markdown filename="my-document.qmd"}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+````
+
+## Anatomy of a Quarto document
+
+**Metadata: YAML**
+
+:::: columns
+::: {.column}
+
+````{.markdown filename="my-document.qmd"}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+````
+
+:::
+
+::: {.column}
+* "Yet another markup language”
+* Metadata of your document
+* Demarcated by three dashes (`---`) on either end
+*  Uses key-value pairs in the format `key: value`
+:::
+
+::::
+
+::: notes
+Quarto documents usually start with an (optional) YAML header demarcated by three dashes on either end. The basic syntax of YAML uses key-value pairs in the format key: value. It controls the output of the document and contain metadata for your document. YAML fields commonly found in headers of documents include metadata like author, subtitle, date as well as customization options like theme, fontcolor, fig-width, etc.
+:::
+
+## Anatomy of a Quarto document
+
+**Text: Markdown**
+
+````{.markdown filename="my-document.qmd"}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+
+In this report, we present a detailed overview of 
+polling places in various counties across the United States.
+````
+
+. . .
+
+* Markdown is a lightweight language for creating formatted text
+* Quarto is based on Pandoc and uses its variation of markdown as its underlying document syntax
+
+::: notes
+Markdown is a lightweight markup language for creating formatted text using a plain-text editor. Quarto uses markdown syntax for text.
+:::
+
+## Anatomy of a Quarto document
+
+**Text: Markdown**
+
++-----------------------------------+-------------------------------+
+| Markdown syntax                   | Output                        |
++===================================+===============================+
+|     *italics* and **bold**        | *italics* and **bold**        |
++-----------------------------------+-------------------------------+
+|     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++-----------------------------------+-------------------------------+
+
+## Anatomy of a Quarto document
+
+**Text: Markdown**
+
+```{=html}
+<div class="sourceCode">
+<pre class="sourceCode markdown">
+<code class="sourceCode markdown">
+**In this report**, we *present* a detailed overview of 
+[polling places](https://www.vote.org/polling-place-locator/) in various 
+counties across the `United States`.
+</code>
+</pre>
+</div>
+```
+
+**In this report**, we *present* a detailed overview of [polling places](https://www.vote.org/polling-place-locator/) in various counties across the `United States`.
+
+## Anatomy of a Quarto document
+
+**Code**
+
+````{.markdown filename="my-document.qmd" code-line-numbers=|8-21}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+
+**In this report**, we *present* a detailed overview of [polling places](https://www.vote.org/polling-place-locator/) in various counties across the `United States`.
+
+```{{r}}
+library(tidyverse)
+
+us_states <- states(cb = TRUE, resolution = "20m") |>
+  filter(NAME != "Puerto Rico")
+
+ggplot(us_states |> filter(NAME == "Alabama")) +
+  geom_sf() +
+  geom_point(data = polling_places |> filter(state == "Alabama"),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+````
+
+## Anatomy of a Quarto document
+
+**Code**
+
+:::: columns
+::: {.column}
+
+````{.markdown filename="my-document.qmd" code-line-numbers=8-21}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+
+**In this report**, we *present* a detailed overview of [polling places](https://www.vote.org/polling-place-locator/) in various counties across the `United States`.
+
+```{{r}}
+library(tidyverse)
+
+us_states <- states(cb = TRUE, resolution = "20m") |>
+  filter(NAME != "Puerto Rico")
+
+ggplot(us_states |> filter(NAME == "Alabama")) +
+  geom_sf() +
+  geom_point(data = polling_places |> filter(state == "Alabama"),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+````
+
+:::
+
+::: {.column}
+* Code chunks begin and end with three backticks (usually)
+* Code chunks are identified with a programming language in between `{}`
+:::
+
+::::
+
+::: notes
+Code chunks are identified with three backticks, the language in curly brackets, and can have optional chunk options identified by the hashpipe at the beginning of the line within the chunk.
+:::
+
+## Anatomy of a Quarto document
+
+**Inline code** executes code *within Markdown*
+
+````{.markdown filename="my-document.qmd"}
+```{{r}}
+counties = 1881
+```
+
+The number of dams is `r counties`.
+````
+
+Results in:
+
+The number of dams is 1881.
+
+## Anatomy of a Quarto document
+
+**Code** can include optional chunk options, in YAML style, identified by `#|` at the beginning of the line
+
++--------------+------------------------------------------------+
+| Option       | Description                                    |
++==============+================================================+
+| `eval`       | Evaluate the code chunk                        |
++--------------+------------------------------------------------+
+| `echo`       | Include the source code                        |
++--------------+------------------------------------------------+
+| `warning`    | Include warnings                               |
++--------------+------------------------------------------------+
+| `include`    | Include code and results                       |
++--------------+------------------------------------------------+
+
+Other options: <https://quarto.org/docs/computations/execution-options.html>
+
+## Anatomy of a Quarto document
+
+````{.markdown code-line-numbers=|9}
+---
+title: "Polling Places Report - Alabama"
+format: html
+---
+
+**In this report**, we *present* a detailed overview of [polling places](https://www.vote.org/polling-place-locator/) in various counties across the `United States`.
+
+```{{r}}
+#| echo: false
+library(tidyverse)
+
+us_states <- states(cb = TRUE, resolution = "20m") |>
+  filter(NAME != "Puerto Rico")
+
+ggplot(us_states |> filter(NAME == "Alabama")) +
+  geom_sf() +
+  geom_point(data = polling_places |> filter(state == "Alabama"),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+````
+
+::: notes
+Code chunks can have optional chunk options identified by the hashpipe at the beginning of the line within the chunk.
+:::
+
+## {background-image="images/demo.png" background-color="aquamarine"}
+
+# Iterating your reports
+
+## Now we are here
+
+![](images/knit-child.png){fig-align="center"}
+
+## Notice how much we'd have to repeat for each report
+
+::: incremental
+- Manually creating tables for Alabama - 65 counties!
+- Manually creating tables for every county in every state - 1881 counties!
+:::
+
+. . .
+
+![](https://media.tenor.com/lJ8UqR3kA7oAAAAj/mushroom-scream.gif){fig-align="center"}
+
+## Let's automate the county tables using `knitr::knit_child()`
+
+::: incremental
+
+- `knitr::knit_child()` allows you to break your content into smaller, modular pieces
+- It involves having a "child" document as a template and running it repeatedly with different parameters
+- The "main" document "knits" or includes the output from the child document
+
+:::
+
+::: notes
+In Quarto, when you have a master document that includes or "knits" other documents, the child documents are referred to as "knit_child." It's a way to organize your content by breaking it into smaller, modular pieces. The main document can then knit or combine these child documents into a final output.
+:::
+
+## Set up the "child" document
+
+````{.markdown filename="_template.qmd" code-line-numbers=|2,10|2-13}
+```{{r}}
+### {{current_county}} COUNTY
+
+* Total Polling Places: `{{r}} polling_places |> filter(state == params$state, county_name == "{{current_county}}") |> count()`
+* Example Locations:
+
+```{{r}}
+polling_places |> 
+  filter(state == params$state, 
+         county_name == "{{current_county}}") |> 
+  head(6) |> 
+  select(name, address.x) |> 
+  kbl(format = "markdown")
+```
+````
+
+::: notes
+The template begins with a title section that includes the county name obtained from the current_county variable. The polling_places data is filtered again to include only the specified state and county. The selected columns (name and address.x) are formatted as a Markdown table using the kbl function.
+:::
+
+## Set up the "main" document
+
+````{.markdown filename="report.qmd"  code-line-numbers="|3-6|8-10|12|15"}
+```{{r}}
+#| results: hide
+counties <- polling_places |> 
+  filter(state == "Alabama") |> 
+  distinct(county_name) |> 
+  pull()
+
+expanded_child <- counties |> 
+  map(function(county) knitr::knit_expand("../_template.qmd", current_county = county))  |> 
+  flatten()
+
+parsed_child <- knitr::knit_child(text = unlist(expanded_child))
+```
+
+`r parsed_child`
+````
+
+::: notes
+This code filters data for Alabama, extracts unique county names, generates child documents based on a template for each county, and then combines these documents into a single document using the knit_child function. It starts by filtering the polling_places data to include only rows where the state is "Alabama." Then we create an empty list named expanded_child, use the lapply function to iterate over each county name (xx), and for each county, it expands a child document by applying the knit_expand function to a template file ("../_template.qmd"). The current_county = xx argument is passed to the knit_expand function to customize the expansion based on the current county name. It will replace some marked text by value evaluated as text. Finally, it combines the expanded child documents into a single document using knit_child. knit_child() is a knitr specific function to run knit() within a main knitting process. The unlist function is used to convert the list of expanded child documents into a character vector.
+:::
+
+##  {background-image="images/demo.png" background-color="aquamarine"}
+
+## Now we're here
+
+![](images/parameters.png){fig-align="center"}
+
+## Notice how much we'd have to repeat for each report
+
+::: incremental
+- Manually creating documents for every state in the dataset - 39 states!
+:::
+
+. . .
+
+![](https://media.tenor.com/lJ8UqR3kA7oAAAAj/mushroom-scream.gif){fig-align="center"}
+
+## Let's automate the state reports using parameters
+
+::: incremental
+
+- Parameters refer to variables or values that you can set in the YAML header
+- These parameters can be used to specifying values that are used throughout the document
+- Using parameters means that we can create copies of the same report for different values by just changing the parameter in the YAML
+
+:::
+
+## Let's automate the state reports using parameters
+
+![](images/params.png){fig-align="center"}
+
+::: footer
+[Parameterized Reporting with Quarto](https://jadeyryan.quarto.pub/rladies-abuja-quarto-params/materials.html) by Jadey Ryan
+:::
+
+## Edit the YAML header {.smaller}
+
+- Use `params` in the key:value pair
+
+```{.yaml code-line-numbers=|12-13}
+---
+title: "Polling Places Report - Alabama"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+## Replace hard-coded variables with the params variable {.smaller}
+
+- Use the `params$state` notation anytime there's a hardcoded value
+
+```{.yaml code-line-numbers=|2}
+---
+title: "Polling Places Report - `{{r}} params$state``"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+## Replace hard-coded variables with the params variable {.smaller}
+
+- Use the `params$state` notation anytime there's a hardcoded value
+
+````{.markdown code-line-numbers=|2,4}
+```{{r}}
+ggplot(us_states |> filter(NAME == params$state)) +
+  geom_sf() +
+  geom_point(data = polling_places |> filter(state == params$state),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+````
+
+::: {.callout-note}
+This includes our inline code and child `_template.qmd` document!
+:::
+
+## Edit `params` in the YAML to rerender the report for different states
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{.yaml code-line-numbers=|13}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+:::
+
+::: {.column width="50%"}
+
+```{.yaml code-line-numbers=|13}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "California"
+---
+```
+
+:::
+::::
+
+## Render the parameterized document
+
+::: incremental
+
+1. Render button in RStudio
+2. Quarto CLI: `quarto render polling-places-report.qmd -P state:'California'`
+3. The quarto R package: `quarto::quarto_render()`
+
+:::
+
+. . .
+
+````{.markdown}
+```{{r}}
+quarto::quarto_render(
+  input = here::here("polling-places-report.qmd"),
+  execute_params = list(state = "California")
+)
+```
+````
+
+##  {background-image="images/demo.png" background-color="aquamarine"}
+
+## Now we're here {background-image="images/example-report.png" background-size="100px" background-repeat="repeat"}
+
+## Render all 39 reports {.smaller}
+
+Option 1: 
+
+::: incremental
+
+1. Change the `params` for each state
+2. Render the report
+3. Change the file name to match the parameter
+4. Repeat 39 times
+:::
+
+## Render all 39 reports    
+
+One HTML report for each state.
+
+::: incremental
+
+1. Create a dataframe with columns that match `quarto::quarto_render()`
+  - `output_format`: file type (html, revealjs, pdf, docx, etc.)
+  - `output_file`: file name with extension
+  - `execute_params`: named list of parameters
+2. Map over each row: `purrr::pwalk(dataframe, quarto_render, quarto_render_args)`
+
+:::
+
+## Create the dataframe to iterate over
+
+````{.markdown filename="_parameters_render.R" code-line-numbers=|2-4|6-7|9-11|12|13-20|21}
+```{{r}}
+library(readr)
+library(dplyr)
+library(quarto)
+
+polling_places <-
+  readr::read_csv(here::here("data", "geocoded_polling_places.csv"))
+
+polling_places_reports <-
+  polling_places |> 
+  dplyr::distinct(state) |>
+  dplyr::slice_head(n = 5) |> 
+  dplyr::mutate(
+    output_format = "html",
+    output_file = paste0(
+      tolower(state),
+      "-polling-places.html"),
+    execute_params = purrr::map(
+      state,
+      \(state) list(state = state))) |> 
+  dplyr::select(output_file, execute_params)
+```
+````
+
+## Map over each row
+
+````{.markdown code-line-numbers=|3|4|5|}
+```{{r}}
+purrr::pwalk(
+  .l = polling_places_reports,                     
+  .f = quarto::quarto_render,                   
+  input = here::here("03-iterate-report-parameters.qmd"), 
+  .progress = TRUE)
+```
+````
+
+## {background-image="images/demo.png"}
+
+# Styling your reports
+
+## Add a Bootswatch theme {.smaller}
+
+- Quarto includes 25 themes from the [Bootswatch](https://bootswatch.com/) project
+- In the YAML, add an included theme using `theme` under `html`
+
+```{.yaml code-line-numbers=|7}
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+    theme:  united
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+## {background-image="images/demo.png"}
+
+## Use extensions {.smaller}
+
+- Extensions are a powerful way to modify and extend Quarto
+- The [Quarto Extensions Gallery](https://m.canouil.dev/quarto-extensions/) has an extensive list of available extensions
+- For example, install and use the `sketchy quarto` extension
+
+```{.yaml code-line-numbers=|6}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  sketchy-html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+## {background-image="images/demo.png"}
+
+## Use custom themes {.smaller}
+
+- Add an `.css` or `.scss` (Syntactically Awesome Style Sheets) file to your project
+- Include it in the YAML to use in your report
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.yaml code-line-numbers=|8}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+    theme: [default, custom.scss]
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+:::
+
+
+::: {.column width="50%"}
+
+```{.css}
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Gilda+Display&display=swap');
+
+$font-family-sans-serif: "Fraunces", sans-serif;
+$presentation-heading-color: #446571;
+$code-block-font-size: 0.6em;
+$code-color: #5f5f5f;
+$presentation-h2-font-size: 1.4em;
+$link-color: #446571 !default;
+```
+
+:::
+::::
+
+## Add a title banner {.smaller}
+
+- Include a formatted title block at the start of the report
+- Add to the YAML using `title-block-banner`
+
+```{.yaml code-line-numbers=|9}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+    theme: [default, custom.scss]
+title-block-banner: images/flag.jpg
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+##  {background-image="images/demo.png" background-color="aquamarine"}
+
+# Rendering other formats
+
+## Add other formats to the YAML {.smaller}
+
+- Quarto can render multiple formats from the same document
+- For example, add `pdf` to the YAML to render both HTML and PDF versions of the report
+
+```{.yaml code-line-numbers=|8}
+---
+title: "Polling Places Report - {{< meta params.state >}}"
+author: "Isabella Velásquez"
+date: today
+format:
+  html:
+    theme: [default, custom.scss]
+  pdf: default
+title-block-banner: images/flag.jpg
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "California"
+---
+```
+
+##  {background-image="images/demo.png" background-color="aquamarine"}
+
+# Summary
+
+## In summary
+
+* You can automate chunks of your reports using `knit_child()`
+* You can automate the same report with different inputs using parameters
+
+## Thank you!
+
+I hope that you enjoyed automating reports using Quarto! I'd love to see what you create:
+
+<center>
+
+[{{< fa brands github >}} \@ivelasq](https://github.com/ivelasq)
+
+[{{< fa brands twitter >}} \@ivelasq3](https://twitter.com/ivelasq3)
+
+[{{< fa brands mastodon >}} \@ivelasq3](https://fosstodon.org/@ivelasq3)
+
+[{{< fa link >}} ivelasq.rbind.io](https://ivelasq.rbind.io)
+
+</center>
+
+## {background-image="images/qa.png"}   

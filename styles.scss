@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+$font-family-sans-serif: "Inter", sans-serif;
+$presentation-title-slide-text-align: "left";
+$code-block-font-size: 0.6em;
+$code-color: #871C0F;
+$link-color: #028BA8;
+
+/*-- scss: rules --*/
+
+.title {
+  font-family: "Archivo Black" !important;
+}

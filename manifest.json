@@ -1,0 +1,452 @@
+{
+  "version": 1,
+  "locale": "en_US",
+  "platform": "4.4.2",
+  "metadata": {
+    "appmode": "quarto-static",
+    "primary_rmd": "index.qmd",
+    "primary_html": null,
+    "content_category": null,
+    "has_parameters": false
+  },
+  "quarto": {
+    "version": "1.8.23",
+    "engines": ["markdown"]
+  },
+  "packages": null,
+  "files": {
+    "_extensions/andrie/reveal-auto-agenda/_extension.yml": {
+      "checksum": "74d1eb5c6eb135cebadd21afac5a2090"
+    },
+    "_extensions/andrie/reveal-auto-agenda/reveal-auto-agenda.css": {
+      "checksum": "1982b8d4c0a5a0b313989bdcea433cae"
+    },
+    "_extensions/andrie/reveal-auto-agenda/reveal-auto-agenda.lua": {
+      "checksum": "ad625206b29a6d709e5e91cc7eb86913"
+    },
+    "_extensions/quarto-ext/fontawesome/_extension.yml": {
+      "checksum": "33184894a50d102978886babb3c5a27f"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/css/all.css": {
+      "checksum": "088a3c770cec8dbe419f555d6e946f0a"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/css/all.min.css": {
+      "checksum": "7441465cab20b640d4156626d19cc63e"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/css/latex-fontsize.css": {
+      "checksum": "8b39f280dda7e5e045afd4db0f0b8288"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/LICENSE.txt": {
+      "checksum": "9b9d97c72a232b7715f2aed4bf4a4d45"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-brands-400.ttf": {
+      "checksum": "15d54d142da2f2d6f2e90ed1d55121af"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-brands-400.woff2": {
+      "checksum": "cbcf42b2e9228a8f5bad42717d8a88db"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-regular-400.ttf": {
+      "checksum": "262525e2081311609d1fdab966c82bfc"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-regular-400.woff2": {
+      "checksum": "89672701a5874b80be27649e0494e354"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-solid-900.ttf": {
+      "checksum": "269f971cec0d5dc864fe9ae080b19e23"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-solid-900.woff2": {
+      "checksum": "4a6591ab5460ae5cbff1ecbd6e52193a"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-v4compatibility.ttf": {
+      "checksum": "4ed293ceaca9b5b2d9cd74a477963fae"
+    },
+    "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-v4compatibility.woff2": {
+      "checksum": "a772da7bff216cd36214bc44165bba3e"
+    },
+    "_extensions/quarto-ext/fontawesome/fontawesome.lua": {
+      "checksum": "cc40f21a9fb44a7838fa49f005806c84"
+    },
+    "_quarto_internal_scss_error.scss": {
+      "checksum": "8e2228462c4db40ca3de34fcfef691a6"
+    },
+    "images/blog.png": {
+      "checksum": "f0500c0b2c420229135736bfea46c49f"
+    },
+    "images/book.png": {
+      "checksum": "d0937a71b8d065552351e9979ecef0e2"
+    },
+    "images/counties.png": {
+      "checksum": "d33d833f9b27b03e6b2fe333535cd913"
+    },
+    "images/dashboard.png": {
+      "checksum": "524101bacf04e2e5c761a7949e3f59d6"
+    },
+    "images/data.png": {
+      "checksum": "8a837038c2ba0e74654ca18d76dd85d6"
+    },
+    "images/demo.png": {
+      "checksum": "e5de9a390d760c5af0a0844aaad1994a"
+    },
+    "images/example-report.png": {
+      "checksum": "ce3d317f0d2ae105e9621f870a2019a9"
+    },
+    "images/geo-info.png": {
+      "checksum": "e5019f176b6ee49cc69e6a415f1405e3"
+    },
+    "images/getting-started.png": {
+      "checksum": "4a1881c20f760b0e02931e25540e0ee2"
+    },
+    "images/headshot.jpg": {
+      "checksum": "80d918f5361af5cc99cdb8818383c41a"
+    },
+    "images/horst-qmd-render-schema.png": {
+      "checksum": "9651513acd3374ef677e68352f59e9d9"
+    },
+    "images/il-report.png": {
+      "checksum": "33149586e19e589756b5e94d245a5d8f"
+    },
+    "images/journal.png": {
+      "checksum": "8029adf74d4cefb06f408c026c82f589"
+    },
+    "images/knit-child.png": {
+      "checksum": "342ed078f7b175a0730cda15e4f445e7"
+    },
+    "images/knitr-plot.png": {
+      "checksum": "dd4ed8fbf4cda3fc9b481ee655b12afd"
+    },
+    "images/labeled-report.png": {
+      "checksum": "2da509776c8c658fac376c8e904a1699"
+    },
+    "images/open-doc.png": {
+      "checksum": "82998a8f823a0cdf736401a9d3638fcd"
+    },
+    "images/parameters.png": {
+      "checksum": "6a9d7231e6c1692c728359ec0d4cf444"
+    },
+    "images/params.png": {
+      "checksum": "68c37b8d1b2508751630d4d0e8632c3f"
+    },
+    "images/polling-info.png": {
+      "checksum": "5636b28357cd089228c525b4ace28aaa"
+    },
+    "images/positron-logo.png": {
+      "checksum": "c1c3179393ec07818c6ae79426d847b6"
+    },
+    "images/presentation.png": {
+      "checksum": "ce13120c9a74d277010414ba7b58e354"
+    },
+    "images/preview.png": {
+      "checksum": "74af1e18cc640f4a2121340e44d076f7"
+    },
+    "images/qa.png": {
+      "checksum": "333fe3367af1df06107e1d7882c1cd74"
+    },
+    "images/quarto.png": {
+      "checksum": "5b1940d02fa38f10001be7dbaedf9980"
+    },
+    "images/render.png": {
+      "checksum": "35079f4c84ab3913479304564cf596ff"
+    },
+    "images/single-doc.png": {
+      "checksum": "c052b81342d9fcc60611a88af1aaa8d2"
+    },
+    "images/single-report.png": {
+      "checksum": "27dc0568a9421ad49e3ca7bc990b8c67"
+    },
+    "images/states.png": {
+      "checksum": "39fb7a6788c07c02e7234cf8bc66bd28"
+    },
+    "images/thumbnail.jpg": {
+      "checksum": "cfa53ab3c0873a3a7b2698140073aeb9"
+    },
+    "images/title.png": {
+      "checksum": "47565ae6f54620af2490975d65aee34e"
+    },
+    "images/tx-report.png": {
+      "checksum": "7fe016b6a1d741675be735067715c07a"
+    },
+    "images/website.png": {
+      "checksum": "95fe45866788dffa8e6f31eb68ebc028"
+    },
+    "index_files/libs/clipboard/clipboard.min.js": {
+      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-brands-400.ttf": {
+      "checksum": "15d54d142da2f2d6f2e90ed1d55121af"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-brands-400.woff2": {
+      "checksum": "cbcf42b2e9228a8f5bad42717d8a88db"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-regular-400.ttf": {
+      "checksum": "262525e2081311609d1fdab966c82bfc"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-regular-400.woff2": {
+      "checksum": "89672701a5874b80be27649e0494e354"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-solid-900.ttf": {
+      "checksum": "269f971cec0d5dc864fe9ae080b19e23"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-solid-900.woff2": {
+      "checksum": "4a6591ab5460ae5cbff1ecbd6e52193a"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-v4compatibility.ttf": {
+      "checksum": "4ed293ceaca9b5b2d9cd74a477963fae"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/1e21o67/fa-v4compatibility.woff2": {
+      "checksum": "a772da7bff216cd36214bc44165bba3e"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/all.min.css": {
+      "checksum": "ee337ce40544178a15f3a080f3665a73"
+    },
+    "index_files/libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css": {
+      "checksum": "8b39f280dda7e5e045afd4db0f0b8288"
+    },
+    "index_files/libs/quarto-contrib/reveal-auto-agenda-0.0.3/reveal-auto-agenda.css": {
+      "checksum": "1982b8d4c0a5a0b313989bdcea433cae"
+    },
+    "index_files/libs/quarto-html/light-border.css": {
+      "checksum": "0b646459f2ef479b718a65b2157c44e4"
+    },
+    "index_files/libs/quarto-html/popper.min.js": {
+      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
+    },
+    "index_files/libs/quarto-html/quarto-syntax-highlighting-9041f07b7be9b5ab81962a5af5c425bf.css": {
+      "checksum": "9041f07b7be9b5ab81962a5af5c425bf"
+    },
+    "index_files/libs/quarto-html/tabby.min.js": {
+      "checksum": "c4219bb6375131a945d7e4bfc49c5f35"
+    },
+    "index_files/libs/quarto-html/tippy.css": {
+      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
+    },
+    "index_files/libs/quarto-html/tippy.umd.min.js": {
+      "checksum": "d828775275749701b48bd9d958814111"
+    },
+    "index_files/libs/revealjs/dist/reset.css": {
+      "checksum": "4042c1a43777d540673cabc97cec67b2"
+    },
+    "index_files/libs/revealjs/dist/reveal.css": {
+      "checksum": "63603931663126b2803c8d50c5ec50a5"
+    },
+    "index_files/libs/revealjs/dist/reveal.esm.js": {
+      "checksum": "5d1b951e8804804eea44b7a50cf46be6"
+    },
+    "index_files/libs/revealjs/dist/reveal.esm.js.map": {
+      "checksum": "9d584b1cffa4cd297219f11a3b41baa4"
+    },
+    "index_files/libs/revealjs/dist/reveal.js": {
+      "checksum": "eca5d46a877fcf34cdad307d63755cc2"
+    },
+    "index_files/libs/revealjs/dist/reveal.js.map": {
+      "checksum": "dfd3ae7706b60dd68619d7415c5bb47c"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.css": {
+      "checksum": "488966d15e97f072801d7e348f4b5141"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.eot": {
+      "checksum": "9900a4643cc63c5d8f969d2196f72572"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.ttf": {
+      "checksum": "91295fa87df918411b49b7531da5d558"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/league-gothic/league-gothic.woff": {
+      "checksum": "cd382dc8a9d6317864b5810a320effc5"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/league-gothic/LICENSE": {
+      "checksum": "8fac5842e2f5a2e6bc067f5beb5035c9"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/LICENSE": {
+      "checksum": "8ea3e41b02e9f465515dad7c89459c5b"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.eot": {
+      "checksum": "72217712eb8d28872e7069322f3fda23"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.ttf": {
+      "checksum": "8256cfd7e4017a7690814879409212cd"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-italic.woff": {
+      "checksum": "e74f0128884561828ce8c9cf5c284ab8"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot": {
+      "checksum": "1d71438462d532b62b05cdd7e6d7197d"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf": {
+      "checksum": "2da39ecf9246383937da11b44b7bd9b4"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff": {
+      "checksum": "e7acc589bb558fe58936a853f570193c"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot": {
+      "checksum": "0f3da1edf1b5c6a94a6ad948a7664451"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf": {
+      "checksum": "f3565095e6c9158140444970f5a2c5ed"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff": {
+      "checksum": "1cb8e94f1185f1131a0c895165998f2b"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot": {
+      "checksum": "58153ac7194e141d1e73ea88c6b63861"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf": {
+      "checksum": "c7e698a4d0956f4a939f42a05685bbf5"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff": {
+      "checksum": "6b058fc2634b01d837c3432316c3141f"
+    },
+    "index_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css": {
+      "checksum": "b4b58710f05264a4011912211d0a9eed"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-34b2626def79d2ac12d30904d47447c3.css": {
+      "checksum": "34b2626def79d2ac12d30904d47447c3"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-3a21953bd1b6c573bb73fca5f50728f5.css": {
+      "checksum": "3a21953bd1b6c573bb73fca5f50728f5"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-50afdcfa6f6f427270b78463887532e1.css": {
+      "checksum": "50afdcfa6f6f427270b78463887532e1"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-ad09bfcc32b742eb873a35442dbd4633.css": {
+      "checksum": "ad09bfcc32b742eb873a35442dbd4633"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-b8af0d9bffa92e2c7ff55e6c0f9a799d.css": {
+      "checksum": "b8af0d9bffa92e2c7ff55e6c0f9a799d"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-d8c5e1bb58442156ca5fb2f4ffc0e7b7.css": {
+      "checksum": "d8c5e1bb58442156ca5fb2f4ffc0e7b7"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-e49412601107091c57af85aeb1d03ee1.css": {
+      "checksum": "e49412601107091c57af85aeb1d03ee1"
+    },
+    "index_files/libs/revealjs/dist/theme/quarto-ea11ddafe103d6e30f018a7a5eb0fc88.css": {
+      "checksum": "ea11ddafe103d6e30f018a7a5eb0fc88"
+    },
+    "index_files/libs/revealjs/plugin/highlight/highlight.esm.js": {
+      "checksum": "19a0f6f1a902d2ef9aaefa1e046b3b2e"
+    },
+    "index_files/libs/revealjs/plugin/highlight/highlight.js": {
+      "checksum": "bebce5c694268a3f8dff84a58b270ba3"
+    },
+    "index_files/libs/revealjs/plugin/highlight/monokai.css": {
+      "checksum": "8c43a819e1268fc57605f500adff816b"
+    },
+    "index_files/libs/revealjs/plugin/highlight/plugin.js": {
+      "checksum": "df2b6cec81d1c3d9730ef2b9421f62a1"
+    },
+    "index_files/libs/revealjs/plugin/highlight/zenburn.css": {
+      "checksum": "28d5b9497037a12cb5a15644fea2f1c3"
+    },
+    "index_files/libs/revealjs/plugin/markdown/markdown.esm.js": {
+      "checksum": "51cf543919182a054e69a3d632356296"
+    },
+    "index_files/libs/revealjs/plugin/markdown/markdown.js": {
+      "checksum": "e19760d2cc93d38d5df00081a1893828"
+    },
+    "index_files/libs/revealjs/plugin/markdown/plugin.js": {
+      "checksum": "a1da0411f474b5bc82d1cc79faf4d0c1"
+    },
+    "index_files/libs/revealjs/plugin/math/katex.js": {
+      "checksum": "2a22abd1eb5a1c923f2d41178427715a"
+    },
+    "index_files/libs/revealjs/plugin/math/math.esm.js": {
+      "checksum": "51b0b5e4a4dd80029ab90fb9ded6b67c"
+    },
+    "index_files/libs/revealjs/plugin/math/math.js": {
+      "checksum": "744ade9a5dacddb69f35ee96cfd6f74a"
+    },
+    "index_files/libs/revealjs/plugin/math/mathjax2.js": {
+      "checksum": "c1ea64afa05c3677d2c404755193b2be"
+    },
+    "index_files/libs/revealjs/plugin/math/mathjax3.js": {
+      "checksum": "57d54e9c4fb748505b3709484593834a"
+    },
+    "index_files/libs/revealjs/plugin/math/plugin.js": {
+      "checksum": "ec9cb99b85a8026d24b26526f6effe0d"
+    },
+    "index_files/libs/revealjs/plugin/notes/notes.esm.js": {
+      "checksum": "e1d960e6895a06986c9509c30ba784b2"
+    },
+    "index_files/libs/revealjs/plugin/notes/notes.js": {
+      "checksum": "db8fab48fe15b175ca69e99f8af2fdfc"
+    },
+    "index_files/libs/revealjs/plugin/notes/plugin.js": {
+      "checksum": "9e52c9625a2f659373cc6e4c5ccf5b80"
+    },
+    "index_files/libs/revealjs/plugin/notes/speaker-view.html": {
+      "checksum": "3e84d135161198849174057abe95b91c"
+    },
+    "index_files/libs/revealjs/plugin/pdf-export/pdfexport.js": {
+      "checksum": "d851935da36e7b598d2d57764599f88b"
+    },
+    "index_files/libs/revealjs/plugin/pdf-export/plugin.yml": {
+      "checksum": "76add7202812cd14a48ca57b96777de4"
+    },
+    "index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css": {
+      "checksum": "4ba6b644b711bc2fc89389d78209da6d"
+    },
+    "index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js": {
+      "checksum": "51cc37b684f5af8171d58269f6c18f07"
+    },
+    "index_files/libs/revealjs/plugin/quarto-line-highlight/plugin.yml": {
+      "checksum": "4af9468c1cc516c6b54c12e686ba708f"
+    },
+    "index_files/libs/revealjs/plugin/quarto-support/footer.css": {
+      "checksum": "b756f7eedcfd9b82421dd144f0ef7578"
+    },
+    "index_files/libs/revealjs/plugin/quarto-support/plugin.yml": {
+      "checksum": "4f79b4a104bed30cd5b7b49d598bed88"
+    },
+    "index_files/libs/revealjs/plugin/quarto-support/support.js": {
+      "checksum": "4403872730e278a9f00b5d3022de4369"
+    },
+    "index_files/libs/revealjs/plugin/reveal-menu/menu.css": {
+      "checksum": "1b9988f08dfe354c44e134304b3df8af"
+    },
+    "index_files/libs/revealjs/plugin/reveal-menu/menu.js": {
+      "checksum": "8db4f7eb4ad5670e6be4bdf83c389ca2"
+    },
+    "index_files/libs/revealjs/plugin/reveal-menu/plugin.yml": {
+      "checksum": "b949d3d3d5bdf5b5f508e6bfb328798e"
+    },
+    "index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css": {
+      "checksum": "c8715037656f6595dbc3d9145fc7d8ac"
+    },
+    "index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js": {
+      "checksum": "d7e0fadc3011a74b823d1bb5006ffa9b"
+    },
+    "index_files/libs/revealjs/plugin/search/plugin.js": {
+      "checksum": "e39d5a868aff604a4bec144ae7a43c5b"
+    },
+    "index_files/libs/revealjs/plugin/search/search.esm.js": {
+      "checksum": "1ff0e5fd23d9e0790498078f4acd37e8"
+    },
+    "index_files/libs/revealjs/plugin/search/search.js": {
+      "checksum": "e265925ae6ee6ec778ed10ecba3c3da0"
+    },
+    "index_files/libs/revealjs/plugin/zoom/plugin.js": {
+      "checksum": "75d50a8cac0d19f0824a1c5876d36673"
+    },
+    "index_files/libs/revealjs/plugin/zoom/zoom.esm.js": {
+      "checksum": "c0a980f05da4f0bdd2ef6c8227fce9d3"
+    },
+    "index_files/libs/revealjs/plugin/zoom/zoom.js": {
+      "checksum": "9c28a4d1f1502771665328f6abb091c0"
+    },
+    "index.html": {
+      "checksum": "d4b28dcb7aaa09c5444c1a4fff870423"
+    },
+    "index.qmd": {
+      "checksum": "866fc3e44e10478f858d9fcd9eb1c10b"
+    },
+    "README.md": {
+      "checksum": "d2088bfcc0ec09688fa9cb42821e69c7"
+    },
+    "styles.scss": {
+      "checksum": "e07b350319c6abaf18f0de8d1bb9e7b5"
+    },
+    "tabset.html": {
+      "checksum": "f31eff08e64bf59f12472c9fe97f8b42"
+    }
+  },
+  "users": null
+}
