@@ -94,7 +94,7 @@ How to do this without...
 
 ## Session materials
 
--   Slides: <https://ivelasq.quarto.pub/getting-started-with-report-writing-using-quarto/>
+-   Slides: <ivelasq-automating-quarto.share.connect.posit.cloud>
 -   GitHub repo with templates: <https://github.com/ivelasq/reports-with-quarto-exercises>
 
 . . .
