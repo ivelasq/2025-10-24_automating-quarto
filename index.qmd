@@ -20,13 +20,14 @@ format:
       data-background-image: images/title.png
       data-background-color: "white"
       style: "text-align: left; right: 10%; font-size: 0.9em"
+    footer: "ivelasq-automating-quarto.share.connect.posit.cloud"
 ---
 
 ## Introduction
 
 <center>
 
-<img src="images/headshot.jpg" style="border-radius: 50%;" width="250px"/>
+![](images/headshot.jpg){style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;" width=20% }
 
 [{{< fa brands github >}} \@ivelasq](https://github.com/ivelasq)
 
