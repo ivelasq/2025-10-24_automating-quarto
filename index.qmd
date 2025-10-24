@@ -267,7 +267,7 @@ A Quarto document contains three types of content: a YAML header, code chunks, a
 
 **Metadata: YAML**
 
-````{.markdown filename="my-document.qmd"}
+````{.markdown filename="report.qmd"}
 ---
 title: "Polling Places Report - Alabama"
 format: html
@@ -281,7 +281,7 @@ format: html
 :::: columns
 ::: {.column}
 
-````{.markdown filename="my-document.qmd"}
+````{.markdown filename="report.qmd"}
 ---
 title: "Polling Places Report - Alabama"
 format: html
@@ -307,7 +307,7 @@ Quarto documents usually start with an (optional) YAML header demarcated by thre
 
 **Text: Markdown**
 
-````{.markdown filename="my-document.qmd"}
+````{.markdown filename="report.qmd"}
 ---
 title: "Polling Places Report - Alabama"
 format: html
@@ -358,13 +358,15 @@ counties across the `United States`.
 </div>
 ```
 
+Results in:
+
 **In this report**, we *present* a detailed overview of [polling places](https://www.vote.org/polling-place-locator/) in various counties across the `United States`.
 
 ## Anatomy of a Quarto document
 
 **Code**
 
-````{.markdown filename="my-document.qmd" code-line-numbers=|8-21}
+````{.markdown filename="report.qmd" code-line-numbers=|8-21}
 ---
 title: "Polling Places Report - Alabama"
 format: html
@@ -395,7 +397,7 @@ ggplot(us_states |> filter(NAME == "Alabama")) +
 :::: columns
 ::: {.column}
 
-````{.markdown filename="my-document.qmd" code-line-numbers=8-21}
+````{.markdown filename="report.qmd" code-line-numbers=8-21}
 ---
 title: "Polling Places Report - Alabama"
 format: html
@@ -434,19 +436,9 @@ Code chunks are identified with three backticks, the language in curly brackets,
 
 ## Anatomy of a Quarto document
 
-**Inline code** executes code *within Markdown*
+**Code**
 
-````{.markdown filename="my-document.qmd"}
-```{{r}}
-counties = 1881
-```
-
-The number of dams is `r counties`.
-````
-
-Results in:
-
-The number of dams is 1881.
+![](images/code-render.png){fig-align="center" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}
 
 ## Anatomy of a Quarto document
 
@@ -478,6 +470,7 @@ format: html
 
 ```{{r}}
 #| echo: false
+#| warning: false
 library(tidyverse)
 
 us_states <- states(cb = TRUE, resolution = "20m") |>
@@ -496,6 +489,28 @@ ggplot(us_states |> filter(NAME == "Alabama")) +
 ::: notes
 Code chunks can have optional chunk options identified by the hashpipe at the beginning of the line within the chunk.
 :::
+
+## Anatomy of a Quarto document
+
+**Code**
+
+![](images/code-options-render.png){fig-align="center" style="box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); border-radius: 5px;"}
+
+## Anatomy of a Quarto document
+
+**Inline code** executes code *within Markdown*
+
+````{.markdown filename="report.qmd"}
+```{{r}}
+counties = 1881
+```
+
+The number of counties is `r counties`.
+````
+
+Results in:
+
+The number of counties is 1881.
 
 ## {background-image="images/demo.png" background-color="aquamarine"}
 
@@ -532,17 +547,18 @@ In Quarto, when you have a master document that includes or "knits" other docume
 
 ## Set up the "child" document
 
-````{.markdown filename="_template.qmd" code-line-numbers=|2,10|2-13}
-```{{r}}
-### {{current_county}} COUNTY
+Original:
 
-* Total Polling Places: `{{r}} polling_places |> filter(state == params$state, county_name == "{{current_county}}") |> count()`
+````{.markdown filename="_template.qmd" code-line-numbers=|1,3,9}
+### BALDWIN COUNTY
+
+* Total Polling Places: `r polling_places |> filter(state == "Alabama", county_name == "BALDWIN") |> count()`
 * Example Locations:
 
 ```{{r}}
 polling_places |> 
-  filter(state == params$state, 
-         county_name == "{{current_county}}") |> 
+  filter(state == "Alabama",
+         county_name == "BALDWIN") |> 
   head(6) |> 
   select(name, address.x) |> 
   kbl(format = "markdown")
@@ -551,6 +567,30 @@ polling_places |>
 
 ::: notes
 The template begins with a title section that includes the county name obtained from the current_county variable. The polling_places data is filtered again to include only the specified state and county. The selected columns (name and address.x) are formatted as a Markdown table using the kbl function.
+:::
+
+## Set up the "child" document
+
+Child document:
+
+````{.markdown filename="_template.qmd" code-line-numbers=1,3,9}
+### {{current_county}} COUNTY
+
+* Total Polling Places: `r polling_places |> filter(state == "Alabama", county_name == "{{current_county}}") |> count()`
+* Example Locations:
+
+```{{r}}
+polling_places |> 
+  filter(state == "Alabama",
+         county_name == "{{current_county}}") |> 
+  head(6) |> 
+  select(name, address.x) |> 
+  kbl(format = "markdown")
+```
+````
+
+::: notes
+Now, anytime a county is mentioned, we use a placeholder instead.
 :::
 
 ## Set up the "main" document
@@ -574,7 +614,7 @@ parsed_child <- knitr::knit_child(text = unlist(expanded_child))
 ````
 
 ::: notes
-This code filters data for Alabama, extracts unique county names, generates child documents based on a template for each county, and then combines these documents into a single document using the knit_child function. It starts by filtering the polling_places data to include only rows where the state is "Alabama." Then we create an empty list named expanded_child, use the lapply function to iterate over each county name (xx), and for each county, it expands a child document by applying the knit_expand function to a template file ("../_template.qmd"). The current_county = xx argument is passed to the knit_expand function to customize the expansion based on the current county name. It will replace some marked text by value evaluated as text. Finally, it combines the expanded child documents into a single document using knit_child. knit_child() is a knitr specific function to run knit() within a main knitting process. The unlist function is used to convert the list of expanded child documents into a character vector.
+This code block is designed to automate the creation of customized documents for every single county in Alabama. It starts by doing the necessary prep work: filtering the polling_places data to include only rows where the state is "Alabama," and then extracting a simple checklist of all the unique county names. Next, the code enters the automation phase by using map (a looping function) to iterate over every county on that list. For each county, the knitr::knit_expand function acts like a smart mail merge, taking a generic template file (\_template.qmd) and filling in the placeholders with the specific, current county name. This creates 67 individual, customized blocks of content. Finally, the code uses knitr::knit_child to take all those separate, expanded pieces of text, unlist them, and stitch them together sequentially into one single, cohesive document, ready to be included in your main report. In short, it turns a list of counties into a single, comprehensive report with a dedicated section for each one.
 :::
 
 ##  {background-image="images/demo.png" background-color="aquamarine"}
@@ -638,7 +678,7 @@ params:
 
 ```{.yaml code-line-numbers=|2}
 ---
-title: "Polling Places Report - `{{r}} params$state``"
+title: "Polling Places Report - Alabama"
 author: "Isabella Velásquez"
 date: today
 format: 
@@ -657,7 +697,44 @@ params:
 
 - Use the `params$state` notation anytime there's a hardcoded value
 
+```{.yaml code-line-numbers=2}
+---
+title: "Polling Places Report - `r params$state`"
+author: "Isabella Velásquez"
+date: today
+format: 
+  html:
+    embed-resources: true
+execute:
+  echo: false
+  message: false
+  warning: false
+params:
+  state: "Alabama"
+---
+```
+
+## Replace hard-coded variables with the params variable {.smaller}
+
+Original:
+
 ````{.markdown code-line-numbers=|2,4}
+```{{r}}
+ggplot(us_states |> filter(NAME == "Alabama")) +
+  geom_sf() +
+  geom_point(data = polling_places |> filter(state == "Alabama"),
+             aes(x = longitude,
+                 y = latitude),
+             alpha = 0.4) +
+  theme_void() 
+```
+````
+
+## Replace hard-coded variables with the params variable {.smaller}
+
+Parameterized:
+
+````{.markdown code-line-numbers=2,4}
 ```{{r}}
 ggplot(us_states |> filter(NAME == params$state)) +
   geom_sf() +
@@ -668,6 +745,8 @@ ggplot(us_states |> filter(NAME == params$state)) +
   theme_void() 
 ```
 ````
+
+. . .
 
 ::: {.callout-note}
 This includes our inline code and child `_template.qmd` document!
@@ -681,7 +760,7 @@ This includes our inline code and child `_template.qmd` document!
 
 ```{.yaml code-line-numbers=|13}
 ---
-title: "Polling Places Report - {{< meta params.state >}}"
+title: "Polling Places Report - `r params$state`"
 author: "Isabella Velásquez"
 date: today
 format: 
@@ -701,7 +780,7 @@ params:
 
 ```{.yaml code-line-numbers=|13}
 ---
-title: "Polling Places Report - {{< meta params.state >}}"
+title: "Polling Places Report - `r params$state`"
 author: "Isabella Velásquez"
 date: today
 format: 
@@ -731,7 +810,7 @@ params:
 
 . . .
 
-````{.markdown}
+````{.markdown code-line-numbers="|2,5|3|4"}
 ```{{r}}
 quarto::quarto_render(
   input = here::here("polling-places-report.qmd"),
@@ -776,8 +855,7 @@ Option 2:
 
 ## Create the dataframe to iterate over
 
-````{.markdown filename="_parameters_render.R" code-line-numbers=|2-4|6-7|9-11|12|13-20|21}
-```{{r}}
+````{.markdown filename="_parameters_render.R" code-line-numbers=|1-3|5-6|8-10|11|12-19|20}
 library(readr)
 library(dplyr)
 library(quarto)
@@ -798,7 +876,6 @@ polling_places_reports <-
       state,
       \(state) list(state = state))) |> 
   dplyr::select(output_file, execute_params)
-```
 ````
 
 ## Map over each row
@@ -839,8 +916,6 @@ params:
 ---
 ```
 
-## {background-image="images/demo.png"}
-
 ## Use extensions {.smaller}
 
 - Extensions are a powerful way to modify and extend Quarto
@@ -863,8 +938,6 @@ params:
   state: "Alabama"
 ---
 ```
-
-## {background-image="images/demo.png"}
 
 ## Use custom themes {.smaller}
 
@@ -892,7 +965,6 @@ params:
 ---
 ```
 :::
-
 
 ::: {.column width="50%"}
 
@@ -936,8 +1008,6 @@ params:
 ---
 ```
 
-##  {background-image="images/demo.png" background-color="aquamarine"}
-
 # Rendering other formats
 
 ## Add other formats to the YAML {.smaller}
@@ -972,6 +1042,7 @@ params:
 
 * You can automate chunks of your reports using `knit_child()`
 * You can automate the same report with different inputs using parameters
+* You can avoid a lot of headaches with Quarto
 
 ## Thank you!
 
