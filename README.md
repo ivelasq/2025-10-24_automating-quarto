@@ -12,6 +12,11 @@ Writing reports often means repeating the same tasks: copying results, updating 
 
 ## Resources
 
+### Positorn
+
+- [Positron Website](https://positron.posit.co)
+- [Positron for RStudio Users: A Gentle Introduction](https://www.youtube.com/watch?v=2fOQzgkxi6g)
+
 ### Data
 
 - [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
@@ -28,7 +33,7 @@ Writing reports often means repeating the same tasks: copying results, updating 
 
 - [Generating dynamic contents in R Markdown and Quarto](https://www.qiushiyan.dev/posts/dynamic-rmd-quarto/) by Qiushi Yan
 - [knit_child in a loop - variable as title (StackOverflow)](https://stackoverflow.com/questions/43873345/knit-child-in-a-loop-variable-as-title)
-- [How do I knit child doc uments with parameters into a main RMarkdown document? (StackOverflow)](https://stackoverflow.com/questions/70655915/how-do-i-knit-child-documents-with-parameters-into-a-main-rmarkdown-document)
+- [How do I knit child documents with parameters into a main RMarkdown document? (StackOverflow)](https://stackoverflow.com/questions/70655915/how-do-i-knit-child-documents-with-parameters-into-a-main-rmarkdown-document)
 
 ### Parameterization
 
