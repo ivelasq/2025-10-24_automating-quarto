@@ -12,7 +12,7 @@ Writing reports often means repeating the same tasks: copying results, updating 
 
 ## Resources
 
-### Positorn
+### Positron
 
 - [Positron Website](https://positron.posit.co)
 - [Positron for RStudio Users: A Gentle Introduction](https://www.youtube.com/watch?v=2fOQzgkxi6g)
