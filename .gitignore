@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 *.html
+!tabset.html
 /index_files/
